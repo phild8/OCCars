@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">OC Cars</string>
 
+    <string name="content">Picture of a orange Lamborghini</string>
+
     <!-- LAYOUT LABEL STRINGS -->
     <string name="title_activity_main">Car Dealership</string>
     <string name="instruction">Enter car purchase information.</string>
