@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.orangecoastcollege.cs273.pdavis11.occars.PurchaseActivity">
 
+    <ImageView
+        android:contentDescription="@string/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/oc_cars_logo"
+        android:id="@+id/ocCarImageView" />
 
     <TextView
         android:id="@+id/purchaseTextView"
@@ -15,32 +21,12 @@
         android:text="@string/instruction"
         android:gravity="center"
         android:textColor="@color/bone_white"
-        android:layout_below="@+id/carOneImageView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:id="@+id/carOneImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/oc_cars_logo"
-        android:contentDescription="@string/content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/ocCarImageView" />
 
     <TextView
         android:id="@+id/carPriceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/downPaymentTextView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="28dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
         android:text="@string/car_price"
         android:textSize="12sp" />
 
@@ -48,9 +34,6 @@
         android:id="@+id/downPaymentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/carPriceTextView"
-        android:layout_alignStart="@+id/carPriceTextView"
-        android:layout_centerVertical="true"
         android:text="@string/down_payment"
         android:textSize="12sp" />
 
@@ -58,40 +41,31 @@
         android:id="@+id/dollar1TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dollar_sign"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_alignBaseline="@+id/carPriceTextView"
-        android:layout_alignBottom="@+id/carPriceTextView"
-        android:layout_toRightOf="@+id/downPaymentTextView"
-        android:layout_toEndOf="@+id/downPaymentTextView" />
+        android:text="@string/dollar_sign" />
 
     <TextView
         android:id="@+id/dollar2TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dollar_sign"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/dollar1TextView"
-        android:layout_alignStart="@+id/dollar1TextView" />
+        android:text="@string/dollar_sign" />
 
     <RadioGroup
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_below="@+id/carPriceTextView"
         android:background="@color/steel_blue"
         android:textColor="@color/bone_white"
         android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/radioGroup">
+        android:id="@+id/radioGroup"
+        android:layout_marginBottom="99dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
         <RadioButton
             android:id="@+id/threeYearButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="collectCarLoanData"
             android:text="@string/years3"
             android:textColor="@color/bone_white" />
 
@@ -99,16 +73,16 @@
             android:id="@+id/fourYearButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/bone_white"
-            android:onClick="onRadioButtonClicked"
             android:layout_weight="1"
-            android:text="@string/years4" />
+            android:onClick="collectCarLoanData"
+            android:text="@string/years4"
+            android:textColor="@color/bone_white" />
 
         <RadioButton
             android:id="@+id/fiveYearButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="collectCarLoanData"
             android:layout_weight="1"
             android:textColor="@color/bone_white"
             android:text="@string/years5" />
@@ -117,46 +91,37 @@
     <EditText
         android:id="@+id/carPriceEditText"
         android:layout_width="120dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/downPaymentEditText"
-        android:layout_alignLeft="@+id/downPaymentEditText"
-        android:layout_alignStart="@+id/downPaymentEditText"
+        android:layout_height="40dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
+        android:inputType="numberDecimal"
+        android:text=""
+        android:layout_marginTop="15dp" />
 
     <EditText
         android:id="@+id/downPaymentEditText"
         android:layout_width="120dp"
         android:layout_height="25dp"
-        android:layout_alignBottom="@+id/dollar2TextView"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/dollar2TextView"
-        android:layout_toRightOf="@+id/dollar2TextView"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:text="" />
 
     <TextView
         android:id="@+id/loanTermTextView"
         android:layout_width="130sp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/radioGroup"
-        android:layout_centerHorizontal="true"
         android:text="@string/loan_term"
-        android:gravity="center"
         android:textSize="12sp" />
 
     <Button
         android:id="@+id/loanReportButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
         android:onClick="reportSummary"
-        android:text="@string/loan_report_button_text" />
+        android:text="@string/loan_report_button_text"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/loanTermTextView"
+        android:layout_toEndOf="@+id/loanTermTextView"
+        android:layout_marginBottom="10dp" />
 
 
-</android.widget.RelativeLayout>
+</RelativeLayout>

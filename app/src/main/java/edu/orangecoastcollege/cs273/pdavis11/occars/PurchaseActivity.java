@@ -3,8 +3,6 @@ package edu.orangecoastcollege.cs273.pdavis11.occars;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -15,6 +13,8 @@ import android.widget.RadioButton;
  *
  */
 public class PurchaseActivity extends AppCompatActivity {
+
+   // private static final NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     // Connections to VIEW
     private EditText mPricedEditText;
@@ -44,30 +44,22 @@ public class PurchaseActivity extends AppCompatActivity {
         mFiveYearRadioButton = (RadioButton) findViewById(R.id.fiveYearButton);
 
         // Price and down payment Text Watchers
+        /*
         mPricedEditText.addTextChangedListener(carPriceTextWatcher);
         mdDownPaymentEditText.addTextChangedListener(downPaymentTextWatcher);
+        */
+
+
 
     }
 
-
-    public void onRadioButtonClicked(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
-
-        switch(view.getId()){
-            case R.id.threeYearButton:
-                if (checked)
-                    mThreeYearRadioButton.isChecked();
-                    break;
-            case R.id.fourYearButton:
-                if (checked)
-                    mFourYearRadioButton.isChecked();
-                    break;
-            case R.id.fiveYearButton:
-                if (checked)
-                    mFiveYearRadioButton.isChecked();
-                    break;
-        }
+    /*
+    private void updateViews()
+    {
+        mPricedEditText.setText(currency.format(mCarLoan.getPrice()));
+        mdDownPaymentEditText.setText(currency.format(mCarLoan.getPrice()));
     }
+
 
     private final TextWatcher carPriceTextWatcher = new TextWatcher() {
         @Override
@@ -84,6 +76,7 @@ public class PurchaseActivity extends AppCompatActivity {
             } catch (NumberFormatException e){
                 mCarLoan.setPrice(0);
             }
+            updateViews();
         }
 
         @Override
@@ -92,8 +85,7 @@ public class PurchaseActivity extends AppCompatActivity {
 
     private final TextWatcher downPaymentTextWatcher = new TextWatcher() {
         @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        }
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
         @Override
         public void onTextChanged(CharSequence text, int i, int i1, int i2) {
@@ -104,17 +96,17 @@ public class PurchaseActivity extends AppCompatActivity {
             } catch (NumberFormatException e) {
                 mCarLoan.setPrice(0);
             }
+            updateViews();
         }
 
         @Override
-        public void afterTextChanged(Editable editable) {
-        }
+        public void afterTextChanged(Editable editable) {}
     };
-
-    private void collectCarLoanData()
+    */
+    public void collectCarLoanData(View view)
     {
         mCarLoan.setPrice(Double.parseDouble((mPricedEditText.getText().toString())));
-        mCarLoan.setPrice(Double.parseDouble((mdDownPaymentEditText.getText().toString())));
+        mCarLoan.setDownPayment(Double.parseDouble((mdDownPaymentEditText.getText().toString())));
 
         if (mThreeYearRadioButton.isChecked())
             mCarLoan.setTerm(3);
@@ -125,17 +117,17 @@ public class PurchaseActivity extends AppCompatActivity {
     }
 
 
-    protected void reportSummary(View v)
+    public void reportSummary(View view)
     {
-        collectCarLoanData();
+        collectCarLoanData(view);
 
-        String report = "Monthly Payment: " + mCarLoan.monthlyPayment() + "\n\n";
-        report += "Car Sticker Price:  $" + mCarLoan.getPrice() + "\n";
-        report += "You will put down:  $" + mCarLoan.getDownPayment() + "\n";
-        report += "Taxed Amt:  $" + mCarLoan.taxAmount() + "\n";
-        report += "Your Cost:  $" + mCarLoan.totalAmount() + "\n";
-        report += "Borrowed Amount:  $" + mCarLoan.borrowedAmount() + "\n";
-        report += "Interest Amount:  $" + mCarLoan.interestAmount() + "\n";
+        String report = "Monthly Payment: " + mCarLoan.monthlyPayment() + "\n\n"
+            + "Car Sticker Price:  $" + mCarLoan.getPrice() + "\n"
+            + "You will put down:  $" + mCarLoan.getDownPayment() + "\n"
+            + "Taxed Amt:  $" + mCarLoan.taxAmount() + "\n"
+            + "Your Cost:  $" + mCarLoan.totalAmount() + "\n"
+            + "Borrowed Amount:  $" + mCarLoan.borrowedAmount() + "\n"
+            + "Interest Amount:  $" + mCarLoan.interestAmount() + "\n";
 
 
         // Intents start new activities and can share data with them
