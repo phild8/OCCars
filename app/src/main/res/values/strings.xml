@@ -32,4 +32,7 @@
     <string name="report_line11"> \n\n2. A sales tax rate of 8% is required in Costa Mesa.</string>
     <string name="report_line12"> \n\n3. Vehicles are financed at an annual interest rate of 9%.\n\n</string>
 
+    <string name="down_payment_hint">Cash Amount</string>
+
+
 </resources>

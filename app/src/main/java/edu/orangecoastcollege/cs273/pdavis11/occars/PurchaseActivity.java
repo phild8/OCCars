@@ -42,67 +42,8 @@ public class PurchaseActivity extends AppCompatActivity {
         mThreeYearRadioButton = (RadioButton) findViewById(R.id.threeYearButton);
         mFourYearRadioButton = (RadioButton) findViewById(R.id.fourYearButton);
         mFiveYearRadioButton = (RadioButton) findViewById(R.id.fiveYearButton);
-
-        // Price and down payment Text Watchers
-        /*
-        mPricedEditText.addTextChangedListener(carPriceTextWatcher);
-        mdDownPaymentEditText.addTextChangedListener(downPaymentTextWatcher);
-        */
-
-
-
     }
 
-    /*
-    private void updateViews()
-    {
-        mPricedEditText.setText(currency.format(mCarLoan.getPrice()));
-        mdDownPaymentEditText.setText(currency.format(mCarLoan.getPrice()));
-    }
-
-
-    private final TextWatcher carPriceTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-        @Override
-        public void onTextChanged(CharSequence text, int i, int i1, int i2) {
-            try{
-                double carPrice = Double.parseDouble(text.toString());
-
-                mCarLoan.setPrice(carPrice);
-
-
-            } catch (NumberFormatException e){
-                mCarLoan.setPrice(0);
-            }
-            updateViews();
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {}
-    };
-
-    private final TextWatcher downPaymentTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-        @Override
-        public void onTextChanged(CharSequence text, int i, int i1, int i2) {
-            try {
-                double downPayment = Double.parseDouble(text.toString());
-
-                mCarLoan.setDownPayment(downPayment);
-            } catch (NumberFormatException e) {
-                mCarLoan.setPrice(0);
-            }
-            updateViews();
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {}
-    };
-    */
     public void collectCarLoanData(View view)
     {
         mCarLoan.setPrice(Double.parseDouble((mPricedEditText.getText().toString())));

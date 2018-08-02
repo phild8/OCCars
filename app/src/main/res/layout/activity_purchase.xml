@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,58 +7,149 @@
     tools:context="edu.orangecoastcollege.cs273.pdavis11.occars.PurchaseActivity">
 
     <ImageView
-        android:contentDescription="@string/content"
+        android:id="@+id/ocCarImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/content"
         android:src="@drawable/oc_cars_logo"
-        android:id="@+id/ocCarImageView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/purchaseTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ocCarImageView"
         android:background="@color/steel_blue"
-        android:text="@string/instruction"
         android:gravity="center"
+        android:text="@string/instruction"
         android:textColor="@color/bone_white"
-        android:layout_below="@+id/ocCarImageView" />
+        app:layout_constraintEnd_toEndOf="@+id/ocCarImageView"
+        app:layout_constraintStart_toStartOf="@+id/ocCarImageView"
+        app:layout_constraintTop_toBottomOf="@+id/ocCarImageView" />
+
+    <EditText
+        android:id="@+id/carPriceEditText"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/down_payment_hint"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:labelFor="@id/downPaymentEditText"
+        android:text=""
+        app:layout_constraintEnd_toStartOf="@+id/downPaymentEditText"
+        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintStart_toStartOf="@+id/carPriceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/carPriceTextView" />
+
+    <EditText
+        android:id="@+id/downPaymentEditText"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/downPaymentTextView"
+        app:layout_constraintTop_toBottomOf="@+id/downPaymentTextView" />
+
+    <TextView
+        android:id="@+id/loanTermTextView"
+        android:layout_width="130sp"
+        android:layout_height="13dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/loan_term"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="@+id/downPaymentEditText"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="@+id/carPriceEditText"
+        app:layout_constraintTop_toBottomOf="@+id/downPaymentEditText"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/loanReportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/loanTermTextView"
+        android:layout_toRightOf="@+id/loanTermTextView"
+        android:onClick="reportSummary"
+        android:text="@string/loan_report_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/carPriceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/car_price"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/downPaymentTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/down_payment"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/purchaseTextView"
+        app:layout_constraintTop_toBottomOf="@+id/purchaseTextView" />
 
     <TextView
         android:id="@+id/dollar1TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dollar_sign" />
-
-    <TextView
-        android:id="@+id/dollar2TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dollar_sign" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dollar_sign"
+        app:layout_constraintBottom_toBottomOf="@+id/carPriceEditText"
+        app:layout_constraintEnd_toStartOf="@+id/carPriceEditText"
+        app:layout_constraintStart_toStartOf="@+id/carPriceTextView"
+        app:layout_constraintTop_toTopOf="@+id/carPriceEditText" />
 
     <RadioGroup
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:background="@color/steel_blue"
-        android:textColor="@color/bone_white"
-        android:gravity="center"
         android:id="@+id/radioGroup"
-        android:layout_marginBottom="99dp"
+        android:layout_width="138dp"
+        android:layout_height="92dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
+        android:background="@color/steel_blue"
+        android:gravity="center"
+        android:textColor="@color/bone_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carPriceEditText">
 
         <RadioButton
             android:id="@+id/threeYearButton"
@@ -82,46 +173,33 @@
             android:id="@+id/fiveYearButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="collectCarLoanData"
             android:layout_weight="1"
-            android:textColor="@color/bone_white"
-            android:text="@string/years5" />
+            android:onClick="collectCarLoanData"
+            android:text="@string/years5"
+            android:textColor="@color/bone_white" />
     </RadioGroup>
 
-    <EditText
-        android:id="@+id/carPriceEditText"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:text=""
-        android:layout_marginTop="15dp" />
-
-    <EditText
-        android:id="@+id/downPaymentEditText"
-        android:layout_width="120dp"
-        android:layout_height="25dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:text="" />
+    <TextView
+        android:id="@+id/downPaymentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/down_payment"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/purchaseTextView"
+        app:layout_constraintTop_toBottomOf="@+id/purchaseTextView" />
 
     <TextView
-        android:id="@+id/loanTermTextView"
-        android:layout_width="130sp"
-        android:layout_height="wrap_content"
-        android:text="@string/loan_term"
-        android:textSize="12sp" />
-
-    <Button
-        android:id="@+id/loanReportButton"
+        android:id="@+id/dollar2TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="reportSummary"
-        android:text="@string/loan_report_button_text"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/loanTermTextView"
-        android:layout_toEndOf="@+id/loanTermTextView"
-        android:layout_marginBottom="10dp" />
-
-
-</RelativeLayout>
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/dollar_sign"
+        app:layout_constraintBottom_toBottomOf="@+id/downPaymentEditText"
+        app:layout_constraintEnd_toStartOf="@+id/downPaymentEditText"
+        app:layout_constraintTop_toTopOf="@+id/downPaymentEditText"
+        app:layout_constraintVertical_bias="0.6" />
+</android.support.constraint.ConstraintLayout>
