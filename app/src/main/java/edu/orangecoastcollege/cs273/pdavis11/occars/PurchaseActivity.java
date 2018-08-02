@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import java.text.NumberFormat;
 
 /**
  *
@@ -14,7 +15,7 @@ import android.widget.RadioButton;
  */
 public class PurchaseActivity extends AppCompatActivity {
 
-   // private static final NumberFormat currency = NumberFormat.getCurrencyInstance();
+    private static final NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     // Connections to VIEW
     private EditText mPricedEditText;
@@ -35,13 +36,13 @@ public class PurchaseActivity extends AppCompatActivity {
 
         // Use findViewById to connect controller to each view
         // TextView/EditView
-        mPricedEditText = (EditText) findViewById(R.id.carPriceEditText);
-        mdDownPaymentEditText = (EditText) findViewById(R.id.downPaymentEditText);
+        mPricedEditText = findViewById(R.id.carPriceEditText);
+        mdDownPaymentEditText = findViewById(R.id.downPaymentEditText);
 
         // Loan terms RadioButtons
-        mThreeYearRadioButton = (RadioButton) findViewById(R.id.threeYearButton);
-        mFourYearRadioButton = (RadioButton) findViewById(R.id.fourYearButton);
-        mFiveYearRadioButton = (RadioButton) findViewById(R.id.fiveYearButton);
+        mThreeYearRadioButton = findViewById(R.id.threeYearButton);
+        mFourYearRadioButton = findViewById(R.id.fourYearButton);
+        mFiveYearRadioButton = findViewById(R.id.fiveYearButton);
     }
 
     public void collectCarLoanData(View view)
@@ -53,7 +54,7 @@ public class PurchaseActivity extends AppCompatActivity {
             mCarLoan.setTerm(3);
         else if (mFourYearRadioButton.isChecked())
             mCarLoan.setTerm(4);
-        else
+        else if (mFiveYearRadioButton.isChecked())
             mCarLoan.setTerm(5);
     }
 
@@ -62,13 +63,13 @@ public class PurchaseActivity extends AppCompatActivity {
     {
         collectCarLoanData(view);
 
-        String report = "Monthly Payment: " + mCarLoan.monthlyPayment() + "\n\n"
-            + "Car Sticker Price:  $" + mCarLoan.getPrice() + "\n"
-            + "You will put down:  $" + mCarLoan.getDownPayment() + "\n"
-            + "Taxed Amt:  $" + mCarLoan.taxAmount() + "\n"
-            + "Your Cost:  $" + mCarLoan.totalAmount() + "\n"
-            + "Borrowed Amount:  $" + mCarLoan.borrowedAmount() + "\n"
-            + "Interest Amount:  $" + mCarLoan.interestAmount() + "\n";
+        String report = "Monthly Payment: " + currency.format(mCarLoan.monthlyPayment()) + "\n\n"
+            + "Car Sticker Price:  $" + currency.format(mCarLoan.getPrice()) + "\n"
+            + "You will put down:  $" + currency.format(mCarLoan.getDownPayment()) + "\n"
+            + "Taxed Amt:  $" + currency.format(mCarLoan.taxAmount()) + "\n"
+            + "Your Cost:  $" + currency.format(mCarLoan.totalAmount()) + "\n"
+            + "Borrowed Amount:  $" + currency.format(mCarLoan.borrowedAmount()) + "\n"
+            + "Interest Amount:  $" + currency.format(mCarLoan.interestAmount()) + "\n";
 
 
         // Intents start new activities and can share data with them
