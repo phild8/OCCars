@@ -9,9 +9,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
-import java.io.IOException;
 import java.text.NumberFormat;
 
 /**
